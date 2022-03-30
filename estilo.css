@@ -1,0 +1,31 @@
+body.h1.h2.h3.p{
+    font-family: Helvetica Neue;
+}
+input{
+    display: block;
+    margin-top: 0px;
+}
+h1 {
+    text-align: center;
+  }
+div{
+   margin: 5px;  
+  }
+#div2{
+    width: 400px;
+}
+
+#div2,h3{
+    text-align: center;
+}
+#div3{
+    border-style: solid;
+    border-radius: 3px;
+}
+table,th,td{
+    border: 1px solid black;
+    border-collapse: collapse;
+  }
+th, td {
+    border-color: #96D4D4;
+  }
