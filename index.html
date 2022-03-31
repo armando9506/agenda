@@ -19,18 +19,18 @@
             <h3>Registrar Datos</h3>
             <form >
                 <input type="text" class="form-control" placeholder="Nombres" name="nombre" id="nombre" required/>
-                <br>
+                <p id = "estadoNombre"></p>
                 <input type="text" class="form-control" placeholder="Apellidos" name = "apellido"  id="apellido"/>
-                <br>
+                <p id = "estadoApellido"></p>
                 <input type="number" class="form-control" placeholder="Número Teléfonico" name="telefono" id="telefono"/>
-                <br>
+                <p id = "estadoNoTelefono"></p>
                 <input type="text" class="form-control" placeholder="Dirección de Residencia" name="direccion" id="direccion"/>
-                <br>
+                <p id = "estadoDireccion"></p>
                 <input type="mail" class="form-control" placeholder="name@example.com" name="correo" id="correo"/>
-                <br>
+                <p id = "estadoMail"></p>
                 
             </form>
-            <button class="btn btn-dark" onclick="pruebaMetodo()">Guardar</button>
+            <button  class="btn btn-dark" onclick="validarFormulario()">Guardar</button>
         </div>
         <div id="div3" class="p-2">
             <table id="tabla">
@@ -40,6 +40,7 @@
                   <th>No. Telefono</th>
                   <th>Direccion</th>
                   <th>Correo Eletronico</th>
+                  <th>Opciones</th>
                 </tr>
                 <tr>
                   <td>Armando</td>
@@ -47,6 +48,8 @@
                   <td>3024133686</td>
                   <td>Villa Orieta</td>
                   <td>Armando@gmail.com</td>
+                  <td><button onclick="modificar">Editar</button>
+                  <button onclick="modificar">Eliminar</button></td>
                 </tr>
                 <tr>
                     <td>Armando</td>
@@ -54,6 +57,9 @@
                     <td>3024133686</td>
                     <td>Villa Orieta</td>
                     <td>Armando@gmail.com</td>
+                    <td><button onclick="modificar">Editar</button>
+                    <button onclick="modificar">Eliminar</button>
+                   </td>
                   </tr>
               </table>
         </div>

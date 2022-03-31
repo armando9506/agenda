@@ -29,3 +29,18 @@ table,th,td{
 th, td {
     border-color: #96D4D4;
   }
+  #estadoNombre{
+      color: brown;
+  }
+  #estadoNoTelefono{
+    color: brown; 
+  }
+  #estadoApellido{
+    color: brown; 
+  }
+  #estadoDireccion{
+    color: brown; 
+  }
+  #estadoMail{
+    color: brown;
+  }
