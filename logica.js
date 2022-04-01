@@ -1,4 +1,6 @@
 
+var usuarios = [];
+
 function validarFormulario(){
    var nombre = document.getElementById("nombre").value;
    var apellido = document.getElementById("apellido").value;
@@ -38,24 +40,34 @@ function validarFormulario(){
                             document.getElementById("estadoDireccion").innerHTML = ""
                             document.getElementById("estadoMail").innerHTML = ""
 
-                            document.getElementById("nombre").value = ""
-                            document.getElementById("apellido").value = ""
-                            document.getElementById("telefono").value = ""
-                            document.getElementById("direccion").value = ""
-                            document.getElementById("correo").value = ""
-
                             
 
-                            var usuario = {
-                                nombre : nombre,
-                                apellido : apellido,
-                                telefono : telefono,
-                                direccion : direccion,
-                                correo : correo
+                            var bandera = false;
+                            for (const user of usuarios) {
+                                if(user.telefono == telefono){
+                                    bandera = true;
+                                }
+                            }
+                            if (!bandera){
+                                var usuario = {
+                                    nombre : nombre,
+                                    apellido : apellido,
+                                    telefono : telefono,
+                                    direccion : direccion,
+                                    correo : correo
+                                }
+                                usuarios.push(usuario);
+                                console.log( usuarios)
+                                mostrarUsuarios(usuarios);
+                                    document.getElementById("nombre").value = ""
+                                    document.getElementById("apellido").value = ""
+                                    document.getElementById("telefono").value = ""
+                                    document.getElementById("direccion").value = ""
+                                    document.getElementById("correo").value = ""
+                            }else{
+                                document.getElementById("estadoNoTelefono").innerHTML = "* El numero de telefono ya existe"
                             }
                             
-                            
-                            mostrarUsuarios(usuario);
                           }
                       }
                   }
@@ -68,14 +80,19 @@ function validarFormulario(){
 
 
 
-function mostrarUsuarios(usuario){
-    var usuarios = [];
-     usuarios.push(usuario);
-    for (const usuario of usuarios) {
-  
+function mostrarUsuarios(usuarios){
+    var tabla = document.getElementById("cuerpoTabla");
+    tabla.innerHTML = ""
+     
+    for (const usuario of usuarios ) {
+       if(document.getElementById(usuario.telefono)){
+        console.log("Encontrado!!")
+       }else{
+       
+
         var y = document.createElement("TR");
         y.setAttribute("id", usuario.telefono);
-        document.getElementById("tabla").appendChild(y);
+        document.getElementById("cuerpoTabla").appendChild(y);
     //____________________________Nombre________________________
         var columnaNombre = document.createElement("TD");
         var valorNombre = document.createTextNode(usuario.nombre);
@@ -97,24 +114,22 @@ function mostrarUsuarios(usuario){
         var valorDireccion = document.createTextNode(usuario.direccion);
         columnaDireccion.appendChild(valorDireccion);
         document.getElementById(usuario.telefono).appendChild(columnaDireccion);
-
         //________________________Correo___________________________
         var columnaCorreo = document.createElement("TD");
         var valorCorreo = document.createTextNode(usuario.correo);
         columnaCorreo.appendChild(valorCorreo);
         document.getElementById(usuario.telefono).appendChild(columnaCorreo);
-
         //__________________Editar_______Eliminar__________________
         var columnaOpciones = document.createElement("TD");
         var opcionEditar = document.createElement("button");
-        opcionEditar.setAttribute("onclick", "modificar()");
+        opcionEditar.setAttribute("onclick", `modificar(${usuario.telefono})`);
         var valorEditar = document.createTextNode("Editar");
         opcionEditar.appendChild(valorEditar);
         columnaOpciones.appendChild(opcionEditar);
         document.getElementById(usuario.telefono).appendChild(opcionEditar);
        
         var opcionEliminar = document.createElement("button");
-        opcionEliminar.setAttribute("onclick", "eliminar()");
+        opcionEliminar.setAttribute("onclick", `eliminar(${usuario.telefono})`);
         var valorEliminar = document.createTextNode("Eliminar");
         opcionEliminar.appendChild(valorEliminar);
         columnaOpciones.appendChild(opcionEliminar);
@@ -122,15 +137,33 @@ function mostrarUsuarios(usuario){
     
     }
 }
-
-
-function modificar(){
-    alert("Estoy Modificando");
 }
-function eliminar(){
-    var rowId = event.target.parentNode.parentNode.id;
-    document.getElementById(rowId).querySelectorAll(".row-data");
+
+function modificar(telefono){
+    alert("Estoy Modificando " + telefono);
+}
+function eliminar(telefono){
+    let posicion ;
     
-    let posicion = usuarios.indexOf(rowId);
-    alert(posicion)
+    for (const usuario of usuarios) {
+        if(usuario.telefono == telefono){
+            posicion = usuarios.indexOf(usuario);
+            console.log("la posicion es: " + posicion )
+        }
+         
+         
+    }
+    let elementoEliminado = usuarios.splice( posicion, 1);
+    
+
+    var tbody = document.getElementById("cuerpoTabla");
+    var tr = document.getElementById(telefono);
+    tbody.removeChild(tr);
+    console.log( telefono)
+    var tabla = document.getElementById("cuerpoTabla");
+    tabla.innerHTML = ""
+    mostrarUsuarios(usuarios)
+   alert("Fila" + posicion + " " + tr)
+   
+   
 }
