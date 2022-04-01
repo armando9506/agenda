@@ -44,3 +44,6 @@ th, td {
   #estadoMail{
     color: brown;
   }
+  #btnModificar{
+      visibility: hidden;
+  }
