@@ -78,8 +78,6 @@ function validarFormulario(){
   
 }
 
-
-
 function mostrarUsuarios(usuarios){
     var tabla = document.getElementById("cuerpoTabla");
     tabla.innerHTML = ""
@@ -122,7 +120,7 @@ function mostrarUsuarios(usuarios){
         //__________________Editar_______Eliminar__________________
         var columnaOpciones = document.createElement("TD");
         var opcionEditar = document.createElement("button");
-        opcionEditar.setAttribute("onclick", `modificar(${usuario.telefono})`);
+        opcionEditar.setAttribute("onclick", `prepararModificacion(${usuario.telefono})`);
         var valorEditar = document.createTextNode("Editar");
         opcionEditar.appendChild(valorEditar);
         columnaOpciones.appendChild(opcionEditar);
@@ -138,9 +136,107 @@ function mostrarUsuarios(usuarios){
     }
 }
 }
+let posicionModificar ;
+function prepararModificacion(telefono){
+    
+   
+    for (const usuario of usuarios) {
+        if(usuario.telefono == telefono){
+            posicionModificar = usuarios.indexOf(usuario);
+        }
+    }
+    let usuarioModificar = usuarios[posicionModificar];
+    document.getElementById("nombre").value = usuarioModificar.nombre;
+    document.getElementById("apellido").value = usuarioModificar.apellido;
+    document.getElementById("telefono").value = usuarioModificar.telefono;
+    document.getElementById("direccion").value = usuarioModificar.direccion;
+    document.getElementById("correo").value = usuarioModificar.correo;
+    // ------------Colocando visible el boton Modificar
+    document.getElementById("btnModificar").style.visibility = "visible";
+    // ------------Colocando Invisible el boton Modificar
+    document.getElementById("btnGuardar").style.visibility = "hidden";
+    
 
-function modificar(telefono){
-    alert("Estoy Modificando " + telefono);
+}
+
+function modificar(){
+    var nombre = document.getElementById("nombre").value;
+   var apellido = document.getElementById("apellido").value;
+   var telefono = document.getElementById("telefono").value;
+   var direccion = document.getElementById("direccion").value;
+   var correo = document.getElementById("correo").value;
+        if(nombre.length == 0){
+          document.getElementById("estadoNombre").innerHTML = "* El campo debe ser diligenciado"
+        }else {
+            if(apellido.length == 0){
+                document.getElementById("estadoNombre").innerHTML = ""
+                document.getElementById("estadoApellido").innerHTML = "* El campo debe ser diligenciado"
+              }else {
+                if(telefono.length == 0){
+                    document.getElementById("estadoNombre").innerHTML = ""
+                    document.getElementById("estadoApellido").innerHTML = ""
+                    document.getElementById("estadoNoTelefono").innerHTML = "* El campo debe ser diligenciado"
+                  }
+                  else {
+                    if(direccion.length == 0){
+                        document.getElementById("estadoNombre").innerHTML = ""
+                        document.getElementById("estadoApellido").innerHTML = ""
+                        document.getElementById("estadoNoTelefono").innerHTML = ""
+                        document.getElementById("estadoDireccion").innerHTML = "* El campo debe ser diligenciado"
+                      } else {
+                        if(correo.length == 0){
+                            document.getElementById("estadoNombre").innerHTML = ""
+                            document.getElementById("estadoApellido").innerHTML = ""
+                            document.getElementById("estadoNoTelefono").innerHTML = ""
+                            document.getElementById("estadoDireccion").innerHTML = ""
+                            document.getElementById("estadoMail").innerHTML = "* El campo debe ser diligenciado"
+                          }
+                          else {
+                            document.getElementById("estadoNombre").innerHTML = ""
+                            document.getElementById("estadoApellido").innerHTML = ""
+                            document.getElementById("estadoNoTelefono").innerHTML = ""
+                            document.getElementById("estadoDireccion").innerHTML = ""
+                            document.getElementById("estadoMail").innerHTML = ""
+
+                            usuarios[posicionModificar] = "";                           
+
+                            var bandera = false;
+                            for (const user of usuarios) {
+                                if(user.telefono == telefono){
+                                    bandera = true;
+                                }
+                            }
+                            if (!bandera){
+                                var usuario = {
+                                    nombre : nombre,
+                                    apellido : apellido,
+                                    telefono : telefono,
+                                    direccion : direccion,
+                                    correo : correo
+                                }
+                                usuarios[posicionModificar] = usuario;
+                                console.log( usuarios)
+                                // ------------Colocando visible el boton Modificar
+                                document.getElementById("btnModificar").style.visibility = "hidden";
+                                // ------------Colocando Invisible el boton Modificar
+                                document.getElementById("btnGuardar").style.visibility = "visible";
+                                mostrarUsuarios(usuarios);
+                                    document.getElementById("nombre").value = ""
+                                    document.getElementById("apellido").value = ""
+                                    document.getElementById("telefono").value = ""
+                                    document.getElementById("direccion").value = ""
+                                    document.getElementById("correo").value = ""
+
+                            }else{
+                                document.getElementById("estadoNoTelefono").innerHTML = "* El numero de telefono ya existe"
+                            }
+                            
+                          }
+                      }
+                  }
+              }
+        }
+    alert("Todo esta en orden")
 }
 function eliminar(telefono){
     let posicion ;
@@ -148,22 +244,15 @@ function eliminar(telefono){
     for (const usuario of usuarios) {
         if(usuario.telefono == telefono){
             posicion = usuarios.indexOf(usuario);
-            console.log("la posicion es: " + posicion )
-        }
-         
-         
+        }   
     }
     let elementoEliminado = usuarios.splice( posicion, 1);
     
-
     var tbody = document.getElementById("cuerpoTabla");
     var tr = document.getElementById(telefono);
     tbody.removeChild(tr);
-    console.log( telefono)
     var tabla = document.getElementById("cuerpoTabla");
     tabla.innerHTML = ""
     mostrarUsuarios(usuarios)
-   alert("Fila" + posicion + " " + tr)
-   
-   
+  
 }
