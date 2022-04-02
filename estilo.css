@@ -9,10 +9,12 @@ h1 {
     text-align: center;
   }
 div{
-   margin: 5px;  
+    
   }
+  
 #div2{
-    width: 400px;
+    margin: 10px; 
+    width: 390px;
     text-align: center;
     display:inline-block;
     
@@ -24,11 +26,12 @@ h3{
 }
 #div3{
     display: inline-block;
-    width: 800px;
+    width: 838px;
     height: 335px;
     border-color: #9da4db;
     border-style: solid ;
     border-radius: 3px;
+    overflow: auto;
 }
 table {
     font-family: arial, sans-serif;
@@ -61,5 +64,78 @@ table {
     color: brown;
   }
   #btnModificar{
-      visibility: hidden;
+    visibility: hidden;
+    margin: 5px;
+    padding: 5px 10px 5px 10px;
+    border-color: #818cda;
+    border-style: solid ;
+    border-radius: 5px;
+    background-color:#818cda;
+    color: white;
+    font-size: 18px;
   }
+  #btnGuardar{
+    margin: 5px;
+    padding: 5px 10px 5px 10px;
+    border-color: #818cda;
+    border-style: solid ;
+    border-radius: 5px;
+    background-color:#818cda;
+    color: white;
+    font-size: 18px;
+}
+#footer{
+    margin-top: 25px;
+    margin-left: 10px;
+}
+#mensajeGuardado{
+    width: 250px;
+    height: 80px;
+    padding: 20px 10px 10px 25px;
+    border-color: #d6daf3;
+    border-style: solid ;
+    border-radius: 3px;
+    background-color:#d6daf3;
+    color: white;
+    font-size: 22px;
+    display: inline-block;
+    visibility: hidden;
+}
+
+#mensajeEliminado{
+    width: 230px;
+    height: 70px;
+    padding: 15px 10px 10px 25px;
+    border-color: rgb(231, 114, 114);
+    border-style: solid ;
+    border-radius: 3px;
+    background-color:rgb(231, 114, 114);
+    color: white;
+    font-size: 22px;
+    display: inline-block;
+    visibility: hidden;
+    position: fixed;
+    top: 0;
+    right: 0;
+    margin-top: 15px;
+    margin-right: 15px;
+   
+}
+#mensajeModificado{
+    width: 250px;
+    height: 80px;
+    padding: 20px 10px 10px 25px;
+    border-color: black;
+    border-style: solid ;
+    border-radius: 3px;
+    background-color:#d6daf3;
+    color: white;
+    font-size: 22px;
+    display: inline-block;
+    visibility: hidden;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    margin-bottom: 40px;
+    margin-left: 10px;
+}

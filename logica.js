@@ -64,6 +64,14 @@ function validarFormulario(){
                                     document.getElementById("telefono").value = ""
                                     document.getElementById("direccion").value = ""
                                     document.getElementById("correo").value = ""
+                                    //-----------------colocando mensaje de guardado emergente-------------------
+                                        document.getElementById("mensajeGuardado").style.visibility = "visible";
+
+                                        setTimeout(quitarMensaje, 5000);
+
+                                        function quitarMensaje(){
+                                            document.getElementById("mensajeGuardado").style.visibility = "hidden";
+                                        }
                             }else{
                                 document.getElementById("estadoNoTelefono").innerHTML = "* El numero de telefono ya existe"
                             }
@@ -163,8 +171,12 @@ function prepararModificacion(telefono){
     document.getElementById("btnModificar").style.visibility = "visible";
     // ------------Colocando Invisible el boton Modificar
     document.getElementById("btnGuardar").style.visibility = "hidden";
-    
-
+    //para limpiar los mensajes de warning debajos de los campos
+    document.getElementById("estadoNombre").innerHTML = ""
+    document.getElementById("estadoApellido").innerHTML = ""
+    document.getElementById("estadoNoTelefono").innerHTML = ""
+    document.getElementById("estadoDireccion").innerHTML = ""
+    document.getElementById("estadoMail").innerHTML = ""
 }
 
 function modificar(){
@@ -234,6 +246,14 @@ function modificar(){
                                     document.getElementById("telefono").value = ""
                                     document.getElementById("direccion").value = ""
                                     document.getElementById("correo").value = ""
+                                    //-----------------colocando mensaje de guardado emergente-------------------
+                                    document.getElementById("mensajeModificado").style.visibility = "visible";
+
+                                    setTimeout(quitarMensaje, 5000);
+
+                                    function quitarMensaje(){
+                                        document.getElementById("mensajeModificado").style.visibility = "hidden";
+                                    }
 
                             }else{
                                 document.getElementById("estadoNoTelefono").innerHTML = "* El numero de telefono ya existe"
@@ -261,5 +281,14 @@ function eliminar(telefono){
     var tabla = document.getElementById("cuerpoTabla");
     tabla.innerHTML = ""
     mostrarUsuarios(usuarios)
-  
+   //-----------------colocando mensaje de Eliminacion emergente-------------------
+   document.getElementById("mensajeEliminado").style.visibility = "visible";
+
+   setTimeout(quitarMensaje, 4000);
+
+   function quitarMensaje(){
+       document.getElementById("mensajeEliminado").style.visibility = "hidden";
+   }
 }
+  
+

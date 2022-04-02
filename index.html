@@ -12,8 +12,8 @@
 
 </head>
 <body>
-    <h1>Agenda Telefonica</h1>
-    <div >
+    <h1>Agenda Telefónica</h1>
+    <div id="div1" >
       
         <br>
         <div id="div2" >
@@ -31,8 +31,8 @@
                 <p id = "estadoMail"></p>
                 
             </form>
-            <button  class="btn btn-dark" id="btnGuardar" onclick="validarFormulario()">Guardar</button>
-            <button  class="btn btn-primary" id="btnModificar" onclick="modificar()">Modificar</button>
+            <button  id="btnGuardar" onclick="validarFormulario()">Guardar</button>
+            <button  id="btnModificar" onclick="modificar()">Modificar</button>
         </div>
         <div id="div3" >
             <table id="tabla">
@@ -50,7 +50,17 @@
               </table>
         </div>
     </div>
-    
+    <div id="footer">
+        <div id="mensajeGuardado">
+         <p>Registro Guardado!</p>
+        </div>
+        <div id="mensajeEliminado">
+            <p>Registro Eliminado!</p>
+        </div>
+        <div id="mensajeModificado">
+            <p>Registro Modificado!</p>
+        </div>
+    </div>
 
     </body>
     </html>
