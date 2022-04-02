@@ -119,17 +119,25 @@ function mostrarUsuarios(usuarios){
         document.getElementById(usuario.telefono).appendChild(columnaCorreo);
         //__________________Editar_______Eliminar__________________
         var columnaOpciones = document.createElement("TD");
-        var opcionEditar = document.createElement("button");
+        var opcionEditar = document.createElement("a");
+        opcionEditar.setAttribute("href", "#");
+        opcionEditar.setAttribute("style", "margin : 10px");
         opcionEditar.setAttribute("onclick", `prepararModificacion(${usuario.telefono})`);
-        var valorEditar = document.createTextNode("Editar");
-        opcionEditar.appendChild(valorEditar);
+        var imgEditar = document.createElement("img");
+        imgEditar.setAttribute("src", "imagenes/lapiz.png");
+        imgEditar.setAttribute("style", "margin-top : 9px");
+        opcionEditar.appendChild(imgEditar);
         columnaOpciones.appendChild(opcionEditar);
         document.getElementById(usuario.telefono).appendChild(opcionEditar);
        
-        var opcionEliminar = document.createElement("button");
+        var opcionEliminar = document.createElement("a");
+        opcionEliminar.setAttribute("href", "#");
+        opcionEliminar.setAttribute("style", "margin : 10px");
         opcionEliminar.setAttribute("onclick", `eliminar(${usuario.telefono})`);
-        var valorEliminar = document.createTextNode("Eliminar");
-        opcionEliminar.appendChild(valorEliminar);
+        var imgEliminar = document.createElement("img");
+        imgEliminar.setAttribute("src", "imagenes/papelera.png");
+        imgEliminar.setAttribute("style", "margin-top : 9px");
+        opcionEliminar.appendChild(imgEliminar);
         columnaOpciones.appendChild(opcionEliminar);
         document.getElementById(usuario.telefono).appendChild(opcionEliminar);
     
@@ -236,7 +244,6 @@ function modificar(){
                   }
               }
         }
-    alert("Todo esta en orden")
 }
 function eliminar(telefono){
     let posicion ;

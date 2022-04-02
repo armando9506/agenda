@@ -13,21 +13,37 @@ div{
   }
 #div2{
     width: 400px;
+    text-align: center;
+    display:inline-block;
+    
 }
 
-#div2,h3{
+h3{
     text-align: center;
+    
 }
 #div3{
-    border-style: solid;
+    display: inline-block;
+    width: 800px;
+    height: 335px;
+    border-color: #9da4db;
+    border-style: solid ;
     border-radius: 3px;
 }
-table,th,td{
-    border: 1px solid black;
+table {
+    font-family: arial, sans-serif;
     border-collapse: collapse;
+    width: 100%;
   }
-th, td {
-    border-color: #96D4D4;
+  
+  td, th {
+    border: 1px solid #dddddd;
+    text-align: left;
+    padding: 8px;
+  }
+  
+  tr:nth-child(even) {
+    background-color: #d6daf3;
   }
   #estadoNombre{
       color: brown;
